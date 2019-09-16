@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Dark Room</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700,600,regular,500" media="all">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+    <link rel="stylesheet" href="/assets/milligram.min.css">
+    <link rel="stylesheet" href="/assets/style.css">
+    <script src="https://kit.fontawesome.com/b45ddc61d3.js"></script>
+    <script src="https://js.stripe.com/v3"></script>
+</head>
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="column">
+        <img src="/assets/dark-room-logo.png" alt="Dark Room Logo">
+        <h1>Become a Member</h1>
+        <p>We offer two membership levels. Professional Membership is for individuals. The Professional Membership is for companies who would like to have access for up to 3 people. Both memberships levels get 24/7 access to the lounge and all amenities.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column column-50">
+        <h4>Professional Membership - $100/mo</h4>
+        <p>24/7 access for 1 person</p>
+        <button id="checkout-button-MBR-PROFESSIONAL" role="link">Get Professional Membership</button>
+        <div id="error-message"></div>
+        <script>
+          var stripe = Stripe('pk_live_jS03IAQMmDTaTDZxoY4hkcjg');
+          var checkoutButton = document.getElementById('checkout-button-MBR-PROFESSIONAL');
+          checkoutButton.addEventListener('click', function () {
+            stripe.redirectToCheckout({
+              items: [{plan: 'MBR-PROFESSIONAL', quantity: 1}],
+              successUrl: 'https://darkroomatl.com/success',
+              cancelUrl: 'https://darkroomatl.com/canceled',
+            })
+            .then(function (result) {
+              if (result.error) {
+                var displayError = document.getElementById('error-message');
+                displayError.textContent = result.error.message;
+              }
+            });
+          });
+        </script>
+      </div>
+      <div class="column column-50">
+        <h4>Corporate Membership - $250/mo</h4>
+        <p>24/7 access for up to 3 people</p>
+
+        <button id="checkout-button-MBR-CORPORATE" role="link" >Get Corporate Membership</button>
+        <div id="error-message"></div>
+        <script>
+          var stripe = Stripe('pk_live_jS03IAQMmDTaTDZxoY4hkcjg');
+          var checkoutButton = document.getElementById('checkout-button-MBR-CORPORATE');
+          checkoutButton.addEventListener('click', function () {
+            stripe.redirectToCheckout({
+              items: [{plan: 'MBR-CORPORATE', quantity: 1}],
+              successUrl: 'https://darkroomatl.com/success',
+              cancelUrl: 'https://darkroomatl.com/canceled',
+          })
+          .then(function (result) {
+            if (result.error) {
+              // If `redirectToCheckout` fails due to a browser or network
+              // error, display the localized error message to your customer.
+              var displayError = document.getElementById('error-message');
+              displayError.textContent = result.error.message;
+            }
+          });
+        });
+        </script>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
