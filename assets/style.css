@@ -8,3 +8,8 @@ body {
 input {
   color:#fff;
 }
+
+img.logo {
+  display: block;
+  margin:2em 0;
+}
