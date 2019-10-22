@@ -2,7 +2,7 @@ body {
   background-color: #000;
   color: #fff;
   font-family: Montserrat;
-  background: url('../assets/rat-pack-overlay.jpg') 0 0 no-repeat fixed;
+  background: url('rat-pack-overlay.jpg') 0 0 no-repeat fixed;
   height: 100%;
 }
 
