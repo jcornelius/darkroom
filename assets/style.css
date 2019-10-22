@@ -1,15 +1,12 @@
-
 body {
   background-color: #000;
-  color:#fff;
+  color: #fff;
   font-family: Montserrat;
-}
-
-input {
-  color:#fff;
+  background: url('../assets/rat-pack-overlay.jpg') 0 0 no-repeat fixed;
+  height: 100%;
 }
 
 img.logo {
   display: block;
-  margin:2em 0;
+  margin: 2em 0;
 }
